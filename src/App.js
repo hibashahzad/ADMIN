@@ -51,14 +51,14 @@ const navigate=useNavigate();
   }));
   
   const drawer = (
-    <div style={{backgroundColor:'#9C2B14 !important'}} >
+    <div style={{backgroundColor:'#EAF9FB !important'}} >
       <Toolbar />
       <div style={{textAlign:"center"}}>
       <img
             src="https://static.wixstatic.com/media/11c705_5d07b24c70fe4634ba9f1a42ec5aa41f~mv2.jpg/v1/fill/w_312,h_319,al_c,lg_1,q_80,enc_auto/11c705_5d07b24c70fe4634ba9f1a42ec5aa41f~mv2.jpg"
             alt="refresh page again"
             
-            width="80%"
+            width="40%"
           />
           </div>
       <DrawerHeader >
@@ -93,8 +93,8 @@ const navigate=useNavigate();
         ))}
       </List>
       <List>
-        {['View Trainer'].map((text, index) => (
-          <ListItem button key={text} onClick={()=>navigate("/test")} >
+        {['View Category'].map((text, index) => (
+          <ListItem button key={text} onClick={()=>navigate("/Category")} >
             <ListItemIcon>
               <MedicationIcon />
             </ListItemIcon>
@@ -104,7 +104,7 @@ const navigate=useNavigate();
       </List>
       <Divider />
       <List>
-        {['View Trainer Request'].map((text, index) => (
+        {['View SubCategory'].map((text, index) => (
           <ListItem button key={text} >
             <ListItemIcon>
               <ProductionQuantityLimitsIcon />
@@ -114,7 +114,7 @@ const navigate=useNavigate();
         ))}
       </List>
       <List>
-        {['CMS'].map((text, index) => (
+        {['View SignUp Request'].map((text, index) => (
           <ListItem button key={text} >
             <ListItemIcon>
               <RestaurantMenuIcon />
@@ -123,10 +123,11 @@ const navigate=useNavigate();
           </ListItem>
         ))}
       </List>
-      
+  
+   
       <Divider />
       <List>
-        {['Add Schedule'].map((text, index) => (
+        {['View Service Provider'].map((text, index) => (
           <ListItem button key={text} >
             <ListItemIcon>
               <RestaurantMenuIcon />
@@ -135,7 +136,36 @@ const navigate=useNavigate();
           </ListItem>
         ))}
       </List>
-      
+      <List>
+        {['View Booking'].map((text, index) => (
+          <ListItem button key={text} >
+            <ListItemIcon>
+              <RestaurantMenuIcon />
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <List>
+        {['Service Provider Quiz'].map((text, index) => (
+          <ListItem button key={text} >
+            <ListItemIcon>
+              <RestaurantMenuIcon />
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <List>
+        {['Quiz'].map((text, index) => (
+          <ListItem button key={text} >
+            <ListItemIcon>
+              <RestaurantMenuIcon />
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
       <Divider />
       <List>
         {['Log Out'].map((text, index) => (
@@ -155,14 +185,14 @@ const navigate=useNavigate();
   );
 
   return (
-    <Box sx={{ display: 'flex' , backgroundColor:'#EAD8D5',}}>
+    <Box sx={{ display: 'flex' , backgroundColor:'#EAF9FB',}}>
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px`} ,
-           backgroundColor:'#9C2B14 !important'
+          
         }}
       >
         <Toolbar>

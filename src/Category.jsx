@@ -4,16 +4,16 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Button, Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import App from "./App";
-import UerServices from "./Services/services/UserServices";
 import Category from './Services/services/CategoryServices';
 
-const User = () => {
-  const [user, setuser] = React.useState([]);
+
+const CategoryPage = () => {
+  const [category, setcategory] = React.useState([]);
 
   React.useEffect(() => {
-    Category.getUser().then((val) => {
-      setuser(
-        val.user.map((value) => ({
+    Category.getCategory().then((val) => {
+      setcategory( 
+        val.category.map((value) => ({
           ...value,
           id: value._id,
         }))
@@ -24,7 +24,7 @@ const User = () => {
   return (
     <App>
       <Button>Back</Button>
-      <h3 style={{ textAlign: "center" }}>User</h3>
+      <h3 style={{ textAlign: "center" }}>Category</h3>
       <Fab
         color="primary"
         aria-label="add"
@@ -47,9 +47,7 @@ const User = () => {
           columns={[
             { field: "name", width: 160 },
 
-            { field: "phoneNo", width: 300 },
-            { field: "email", width: 300 },
-         
+           
             {
               field: "actions",
               headerName: "Actions",
@@ -76,7 +74,7 @@ const User = () => {
               },
             },
           ]}
-          rows={user}
+          rows={category}
           components={{
             Toolbar: GridToolbar,
           }}
@@ -85,4 +83,4 @@ const User = () => {
     </App>
   );
 };
-export default User;
+export default CategoryPage;

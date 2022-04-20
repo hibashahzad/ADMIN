@@ -8,6 +8,8 @@ import Home from "./Home";
 import Test from "./User";
 import SignInSide from "./Login";
 import User from "./User";
+import Category from './Services/services/CategoryServices';
+import CategoryPage from './Category';
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -16,6 +18,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SignInSide />} />
+        <Route path="/Category" element={<CategoryPage />} />
         <Route path="/home" element={<Home />} />
         <Route path="/user" element={<User/>} />
       </Routes>
