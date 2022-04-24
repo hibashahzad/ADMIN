@@ -1,11 +1,16 @@
-import GenericServices from "./GenericServices";
+import GenericServices from './GenericServices';
 class CategoryServices extends GenericServices {
- 
   // addProduct = (data) => {
   //   return this.post("products", data);
   // };
-  getCategory= () => {
-    return this.get("category");
+  getCategory = () => {
+    return this.get('category');
+  };
+  getCategoryByid = (id) => {
+    return this.get('category/' + id);
+  };
+  updateCategory = (id, data) => {
+    return this.put('category/' + id, data);
   };
   // deleteProduct = (_id) => {
   //   return this.delete("products/" + _id);

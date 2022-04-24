@@ -1,15 +1,27 @@
-import GenericServices from "./GenericServices";
+import GenericServices from './GenericServices';
 class SubCategoryServices extends GenericServices {
- 
   // addProduct = (data) => {
   //   return this.post("products", data);
   // };
-  getSubCategoryByCategory= (id) => {
-    return this.get("subcategory/byCategory/"+id);
+  getSubCategoryByCategory = (id) => {
+    return this.get('subcategory/byCategory/' + id);
   };
-  // deleteProduct = (_id) => {
-  //   return this.delete("products/" + _id);
-  // };
+
+  getSubCategory = () => {
+    return this.get('subcategory');
+  };
+  getSingleCategory = (id) => {
+    return this.get('subcategory/' + id);
+  };
+  deleteSub = (_id) => {
+    return this.delete('subcategory/' + _id);
+  };
+  updateSub = (_id) => {
+    return this.put('subcategory/' + _id);
+  };
+  updateSubImage = (_id) => {
+    return this.put('subcategory/image/' + _id);
+  };
   // updateProduct = (_id, data) => {
   //   return this.put("products/" + _id, data);
   // };

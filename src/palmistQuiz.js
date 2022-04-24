@@ -26,6 +26,7 @@ import * as yup from 'yup';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { useParams } from 'react-router-dom';
 import Category from './Services/services/CategoryServices';
+import QuizP from './Services/services/quiz';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -38,41 +39,74 @@ const Wrapper = styled.div`
 `;
 
 const validationSchema = yup.object({
-  name: yup
+  Question: yup
+    .string('Enter Question')
+
+    .required('Question is required'),
+  Answer1: yup
     .string('Enter Category')
 
-    .required('Category is required')
+    .required('Answer is required'),
+  Answer2: yup
+    .string('Enter Category')
+
+    .required('Answer is required'),
+  Answer3: yup
+    .string('Enter Category')
+
+    .required('Answer is required')
 });
-export default function AddEditCategory() {
-  const { id } = useParams();
+export default function PalmistQuiz() {
+  const { id, sub } = useParams();
   const [loading, setloading] = React.useState(false);
-  const [initialValue, setInitialValue] = React.useState({ name: '' });
+  const [initialValue, setInitialValue] = React.useState({
+    Question: '',
+    Answer1: '',
+    Answer2: '',
+    Answer3: ''
+  });
+  React.useEffect(() => {
+    if (sub) {
+      QuizP.getSingleQuiz(sub).then((val) => {
+        const { Question, Answer1, Answer2, Answer3 } = val.quiz;
+        setInitialValue({ Question, Answer1, Answer2, Answer3 });
+      });
+    }
+  }, []);
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: initialValue,
     validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       // 625e92f6c79665679583d09b
 
       try {
-        Category.updateCategory(id, { name: values.name }).then((val) => {
-          alert('updated');
-        });
+        if (!sub) {
+          QuizP.createQuiz({
+            Question: values.Question,
+            Answer1: values.Answer1,
+            Answer2: values.Answer2,
+            Answer3: values.Answer3,
+            SubCategoryId: id
+          }).then((val) => {
+            resetForm();
+            notify('Quiz Added');
+          });
+        } else {
+          QuizP.updateQuiz(sub, {
+            Question: values.Question,
+            Answer1: values.Answer1,
+            Answer2: values.Answer2,
+            Answer3: values.Answer3
+          }).then((val) => {
+            notify('Quiz updated');
+          });
+        }
       } catch (e) {
         alert(e.error);
       }
     }
   });
-
-  React.useEffect(() => {
-    try {
-      Category.getCategoryByid(id).then((val) => {
-        setInitialValue({ name: val.category.name });
-      });
-    } catch (e) {
-      notify(e.error);
-    }
-  }, []);
 
   const notify = (error) =>
     toast(error, { position: 'top-left', type: 'error' });
@@ -110,23 +144,68 @@ export default function AddEditCategory() {
                     margin: '14px 0'
                   }}
                 >
-                  Edit Category
+                  Palmist Quiz
                 </Typography>
 
                 <form onSubmit={formik.handleSubmit}>
                   <TextField
+                    style={{ marginTop: '10px' }}
+                    fullWidth
+                    id="Question"
+                    name="Question"
+                    label="Question"
+                    value={formik.values.Question}
+                    onChange={formik.handleChange}
+                    error={
+                      formik.touched.Question && Boolean(formik.errors.Question)
+                    }
+                    helperText={
+                      formik.touched.Question && formik.errors.Question
+                    }
+                  />
+                  <TextField
+                    style={{ marginTop: '10px' }}
                     fullWidth
                     id="name"
-                    name="name"
-                    label="name"
-                    value={formik.values.name}
+                    name="Answer1"
+                    label="Answer1"
+                    value={formik.values.Answer1}
                     onChange={formik.handleChange}
-                    error={formik.touched.name && Boolean(formik.errors.name)}
-                    helperText={formik.touched.name && formik.errors.name}
+                    error={
+                      formik.touched.Answer1 && Boolean(formik.errors.Answer1)
+                    }
+                    helperText={formik.touched.Answer1 && formik.errors.Answer1}
+                  />
+                  <TextField
+                    style={{ marginTop: '10px' }}
+                    fullWidth
+                    id="Answer2"
+                    name="Answer2"
+                    label="Answer2"
+                    value={formik.values.Answer2}
+                    onChange={formik.handleChange}
+                    error={
+                      formik.touched.Answer2 && Boolean(formik.errors.Answer2)
+                    }
+                    helperText={formik.touched.Answer2 && formik.errors.Answer2}
+                  />
+                  <TextField
+                    style={{ marginTop: '10px' }}
+                    fullWidth
+                    id="Answer3"
+                    name="Answer3"
+                    label="Answer3"
+                    value={formik.values.Answer3}
+                    onChange={formik.handleChange}
+                    error={
+                      formik.touched.Answer3 && Boolean(formik.errors.Answer3)
+                    }
+                    helperText={formik.touched.Answer3 && formik.errors.Answer3}
                   />
 
                   {/* <CircularProgress size={10} /> */}
                   <Button
+                    style={{ marginTop: '10px' }}
                     type="submit"
                     fullWidth
                     variant="contained"

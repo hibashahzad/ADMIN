@@ -14,7 +14,6 @@ import Toolbar from '@mui/material/Toolbar';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import Typography from '@mui/material/Typography';
 
-
 import PersonIcon from '@mui/icons-material/Person';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
@@ -33,13 +32,11 @@ import { useNavigate } from 'react-router-dom';
 const drawerWidth = 240;
 const App = ({ children }) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
- 
-const navigate=useNavigate();
+
+  const navigate = useNavigate();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
-
 
   const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -47,32 +44,27 @@ const navigate=useNavigate();
     justifyContent: 'center',
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
+    ...theme.mixins.toolbar
   }));
-  
+
   const drawer = (
-    <div style={{backgroundColor:'#EAF9FB !important'}} >
+    <div style={{ backgroundColor: '#EAF9FB !important' }}>
       <Toolbar />
-      <div style={{textAlign:"center"}}>
-      <img
-            src="https://static.wixstatic.com/media/11c705_5d07b24c70fe4634ba9f1a42ec5aa41f~mv2.jpg/v1/fill/w_312,h_319,al_c,lg_1,q_80,enc_auto/11c705_5d07b24c70fe4634ba9f1a42ec5aa41f~mv2.jpg"
-            alt="refresh page again"
-            
-            width="40%"
-          />
-          </div>
-      <DrawerHeader >
-     
-        <div>
-            Hello 
-              Admin
-            </div>
-        </DrawerHeader>
-      
+      <div style={{ textAlign: 'center' }}>
+        <img
+          src="https://static.wixstatic.com/media/11c705_5d07b24c70fe4634ba9f1a42ec5aa41f~mv2.jpg/v1/fill/w_312,h_319,al_c,lg_1,q_80,enc_auto/11c705_5d07b24c70fe4634ba9f1a42ec5aa41f~mv2.jpg"
+          alt="refresh page again"
+          width="40%"
+        />
+      </div>
+      <DrawerHeader>
+        <div>Hello Admin</div>
+      </DrawerHeader>
+
       <Divider />
       <List>
         {['Home'].map((text, index) => (
-          <ListItem button key={text} >
+          <ListItem button key={text}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
@@ -84,7 +76,7 @@ const navigate=useNavigate();
       <Divider />
       <List>
         {['View User'].map((text, index) => (
-          <ListItem button key={text} onClick={()=>navigate("/user")}>
+          <ListItem button key={text} onClick={() => navigate('/user')}>
             <ListItemIcon>
               <PersonIcon />
             </ListItemIcon>
@@ -94,7 +86,7 @@ const navigate=useNavigate();
       </List>
       <List>
         {['View Category'].map((text, index) => (
-          <ListItem button key={text} onClick={()=>navigate("/Category")} >
+          <ListItem button key={text} onClick={() => navigate('/Category')}>
             <ListItemIcon>
               <MedicationIcon />
             </ListItemIcon>
@@ -102,10 +94,9 @@ const navigate=useNavigate();
           </ListItem>
         ))}
       </List>
-      <Divider />
       <List>
-        {['View SubCategory'].map((text, index) => (
-          <ListItem button key={text} >
+        {['SubCategory'].map((text, index) => (
+          <ListItem button key={text} onClick={() => navigate('/SubCat')}>
             <ListItemIcon>
               <ProductionQuantityLimitsIcon />
             </ListItemIcon>
@@ -114,8 +105,20 @@ const navigate=useNavigate();
         ))}
       </List>
       <List>
-        {['View SignUp Request'].map((text, index) => (
-          <ListItem button key={text} >
+        {['Bussness User'].map((text, index) => (
+          <ListItem button key={text} onClick={() => navigate('/bussness')}>
+            <ListItemIcon>
+              <MedicationIcon />
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+
+      <List>
+        {['Palmist Quiz'].map((text, index) => (
+          <ListItem button key={text} onClick={() => navigate('/Quiz')}>
             <ListItemIcon>
               <RestaurantMenuIcon />
             </ListItemIcon>
@@ -123,12 +126,11 @@ const navigate=useNavigate();
           </ListItem>
         ))}
       </List>
-  
-   
+
       <Divider />
       <List>
-        {['View Service Provider'].map((text, index) => (
-          <ListItem button key={text} >
+        {[' Services'].map((text, index) => (
+          <ListItem button key={text}>
             <ListItemIcon>
               <RestaurantMenuIcon />
             </ListItemIcon>
@@ -137,8 +139,8 @@ const navigate=useNavigate();
         ))}
       </List>
       <List>
-        {['View Booking'].map((text, index) => (
-          <ListItem button key={text} >
+        {['Booking'].map((text, index) => (
+          <ListItem button key={text}>
             <ListItemIcon>
               <RestaurantMenuIcon />
             </ListItemIcon>
@@ -146,34 +148,11 @@ const navigate=useNavigate();
           </ListItem>
         ))}
       </List>
-      <List>
-        {['Service Provider Quiz'].map((text, index) => (
-          <ListItem button key={text} >
-            <ListItemIcon>
-              <RestaurantMenuIcon />
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <List>
-        {['Quiz'].map((text, index) => (
-          <ListItem button key={text} >
-            <ListItemIcon>
-              <RestaurantMenuIcon />
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+
       <Divider />
       <List>
         {['Log Out'].map((text, index) => (
-          <ListItem
-            button
-            key={text}
-           
-          >
+          <ListItem button key={text}>
             <ListItemIcon>
               <LogoutIcon />
             </ListItemIcon>
@@ -185,14 +164,13 @@ const navigate=useNavigate();
   );
 
   return (
-    <Box sx={{ display: 'flex' , backgroundColor:'#EAF9FB',}}>
+    <Box sx={{ display: 'flex', backgroundColor: '#EAF9FB' }}>
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px`} ,
-          
+          ml: { sm: `${drawerWidth}px` }
         }}
       >
         <Toolbar>
@@ -212,7 +190,7 @@ const navigate=useNavigate();
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } ,}}
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -228,8 +206,7 @@ const navigate=useNavigate();
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth
-            },
-           
+            }
           }}
         >
           {drawer}
