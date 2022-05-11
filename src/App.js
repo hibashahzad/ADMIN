@@ -129,8 +129,8 @@ const App = ({ children }) => {
 
       <Divider />
       <List>
-        {[' Services'].map((text, index) => (
-          <ListItem button key={text}>
+        {['Services'].map((text, index) => (
+          <ListItem button key={text} onClick={() => navigate('/Quiz')}>
             <ListItemIcon>
               <RestaurantMenuIcon />
             </ListItemIcon>
