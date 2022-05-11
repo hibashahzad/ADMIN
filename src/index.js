@@ -20,6 +20,7 @@ import AddEditSub from './AddEditCategory';
 import BussnessUser from './Bussness';
 import Quiz from './Quiz';
 import PalmistQuiz from './palmistQuiz';
+import AllServices from './AllServices';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -42,6 +43,8 @@ root.render(
 
         <Route path="/palmist/:id" element={<PalmistQuiz />} />
         <Route path="/palmist/:id/:sub" element={<PalmistQuiz />} />
+        <Route path="/Services" element={<AllServices />} />
+        <Route path="/Services/:id" element={<AllServices />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

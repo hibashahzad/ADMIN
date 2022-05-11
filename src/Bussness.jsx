@@ -7,10 +7,11 @@ import App from './App';
 import UerServices from './Services/services/UserServices';
 import Swal from 'sweetalert2';
 import { url } from './Services/services/url';
+import { useNavigate } from 'react-router-dom';
 
 const BussnessUser = () => {
   const [user, setuser] = React.useState([]);
-
+  const navigate = useNavigate();
   React.useEffect(() => {
     UerServices.getbussnessUser().then((val) => {
       console.log(val);
@@ -23,7 +24,8 @@ const BussnessUser = () => {
           status: value.userId.status,
           email: value.userId.email,
           phoneno: value.userId.phoneNo,
-          categoryName: value.categoryId?.name
+          categoryName: value.categoryId?.name,
+          userid: value.userId._id
         }))
       );
     });
@@ -134,14 +136,25 @@ const BussnessUser = () => {
                         </Button>
                       </>
                     ) : (
-                      <Button
-                        style={{ marginRight: '4px' }}
-                        variant="contained"
-                        color="primary"
-                        disabled
-                      >
-                        {params.row.status == 1 ? 'Approved' : 'Disapproved'}
-                      </Button>
+                      <>
+                        <Button
+                          style={{ marginRight: '4px' }}
+                          variant="contained"
+                          color="primary"
+                          disabled
+                        >
+                          {params.row.status == 1 ? 'Approved' : 'Disapproved'}
+                        </Button>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() =>
+                            navigate('/Services/' + params.row.userid)
+                          }
+                        >
+                          View Services
+                        </Button>
+                      </>
                     )}
                   </div>
                 );

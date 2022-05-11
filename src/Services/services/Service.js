@@ -6,7 +6,13 @@ class Service extends GenericServices {
   getService = () => {
     return this.get('service');
   };
- 
+  deleteService = (id) => {
+    return this.delete('service/' + id);
+  };
+  getuserServices = (id) => {
+    return this.get('service/ServiceUser/' + id);
+  };
+
   // updateProduct = (_id, data) => {
   //   return this.put("products/" + _id, data);
   // };
