@@ -140,7 +140,7 @@ const App = ({ children }) => {
       </List>
       <List>
         {['Booking'].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem button key={text} onClick={()=>navigate("/Booking")}>
             <ListItemIcon>
               <RestaurantMenuIcon />
             </ListItemIcon>

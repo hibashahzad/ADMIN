@@ -18,5 +18,5 @@ class BookingServices extends GenericServices {
   //   return this.get("products/" + _id);
   // };
 }
-let Booking = new BookingServices();
-export default Booking;
+let booking = new BookingServices();
+export default booking;
