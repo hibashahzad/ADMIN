@@ -14,10 +14,16 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Container } from '@mui/material';
 import { Navigate, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function Copyright(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
         Your Website
@@ -31,15 +37,22 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
-    const navigate=useNavigate()
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    navigate("/home");
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    if (
+      data.get('email') == 'admin@gmail.com' &&
+      data.get('password') == 'adminpalmist'
+    ) {
+      navigate('/home');
+      console.log({
+        email: data.get('email'),
+        password: data.get('password')
+      });
+    } else {
+      Swal.fire('Username Or Password is Incorrect');
+    }
   };
 
   return (
@@ -55,22 +68,22 @@ export default function SignInSide() {
             backgroundImage: 'url(https://source.unsplash.com/random)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+              t.palette.mode === 'light'
+                ? t.palette.grey[50]
+                : t.palette.grey[900],
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundPosition: 'center'
           }}
         />
- 
+
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-         
           <Box
             sx={{
               my: 8,
               mx: 4,
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center',
-            
+              alignItems: 'center'
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -79,7 +92,12 @@ export default function SignInSide() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 1 }}
+            >
               <TextField
                 margin="normal"
                 required
@@ -127,9 +145,7 @@ export default function SignInSide() {
               <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>
-        
         </Grid>
-       
       </Grid>
     </ThemeProvider>
   );
