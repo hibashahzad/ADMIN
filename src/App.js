@@ -105,8 +105,18 @@ const App = ({ children }) => {
         ))}
       </List>
       <List>
-        {['Bussness User'].map((text, index) => (
+        {['Bussness Approval Requests'].map((text, index) => (
           <ListItem button key={text} onClick={() => navigate('/bussness')}>
+            <ListItemIcon>
+              <MedicationIcon />
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <List>
+        {['Approved Bussness User'].map((text, index) => (
+          <ListItem button key={text} onClick={() => navigate('/bussnessA')}>
             <ListItemIcon>
               <MedicationIcon />
             </ListItemIcon>
@@ -140,7 +150,7 @@ const App = ({ children }) => {
       </List>
       <List>
         {['Booking'].map((text, index) => (
-          <ListItem button key={text} onClick={()=>navigate("/Booking")}>
+          <ListItem button key={text} onClick={() => navigate('/Booking')}>
             <ListItemIcon>
               <RestaurantMenuIcon />
             </ListItemIcon>

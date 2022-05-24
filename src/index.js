@@ -22,6 +22,7 @@ import Quiz from './Quiz';
 import PalmistQuiz from './palmistQuiz';
 import AllServices from './AllServices';
 import Booking from './Booking';
+import BussnessA from './BussnessA';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -41,13 +42,12 @@ root.render(
         <Route path="/bussness" element={<BussnessUser />} />
         <Route path="/Quiz" element={<Quiz />} />
         <Route path="/Quiz/:id" element={<Quiz />} />
-
+        <Route path="/bussnessA" element={<BussnessA />} />
         <Route path="/palmist/:id" element={<PalmistQuiz />} />
         <Route path="/palmist/:id/:sub" element={<PalmistQuiz />} />
         <Route path="/Services" element={<AllServices />} />
         <Route path="/Services/:id" element={<AllServices />} />
         <Route path="/Booking" element={<Booking />} />
-        
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

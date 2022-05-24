@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import { url } from './Services/services/url';
 import { useNavigate } from 'react-router-dom';
 
-const BussnessUser = () => {
+const BussnessA = () => {
   const [user, setuser] = React.useState([]);
   const navigate = useNavigate();
   React.useEffect(() => {
@@ -17,7 +17,7 @@ const BussnessUser = () => {
       console.log(val);
       setuser(
         val.bussness
-          .filter((val) => val.userId.status == 0 || val.userId.status == 2)
+          .filter((val) => val.userId.status == 1)
           .map((value) => ({
             ...value,
             id: value._id,
@@ -173,4 +173,4 @@ const BussnessUser = () => {
     </App>
   );
 };
-export default BussnessUser;
+export default BussnessA;
