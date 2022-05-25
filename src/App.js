@@ -13,7 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import Typography from '@mui/material/Typography';
-
+import BookIcon from '@mui/icons-material/Book';
 import PersonIcon from '@mui/icons-material/Person';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
@@ -152,7 +152,7 @@ const App = ({ children }) => {
         {['Booking'].map((text, index) => (
           <ListItem button key={text} onClick={() => navigate('/Booking')}>
             <ListItemIcon>
-              <RestaurantMenuIcon />
+              <BookIcon />
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
@@ -162,7 +162,7 @@ const App = ({ children }) => {
       <Divider />
       <List>
         {['Log Out'].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem button key={text} onClick={() => navigate('/')}>
             <ListItemIcon>
               <LogoutIcon />
             </ListItemIcon>

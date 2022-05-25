@@ -36,19 +36,6 @@ const User = () => {
   };
   return (
     <App>
-      <Button>Back</Button>
-      <h3 style={{ textAlign: 'center' }}>User</h3>
-      <Fab
-        color="primary"
-        aria-label="add"
-        sx={{
-          position: 'fixed',
-          top: 70,
-          right: 16
-        }}
-      >
-        <AddIcon />
-      </Fab>
       <div style={{ width: '100%' }}>
         <DataGrid
           autoHeight

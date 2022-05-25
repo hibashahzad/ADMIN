@@ -71,7 +71,6 @@ const Quiz = () => {
 
   return (
     <App>
-      <Button>Back</Button>
       <h3 style={{ textAlign: 'center' }}>Palmist Quiz</h3>
 
       <div style={{ width: '100%' }}>

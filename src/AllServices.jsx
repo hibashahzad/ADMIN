@@ -81,7 +81,6 @@ const AllServices = () => {
   };
   return (
     <App>
-      <Button>Back</Button>
       <h3 style={{ textAlign: 'center' }}>Service</h3>
 
       <div style={{ width: '100%' }}>
