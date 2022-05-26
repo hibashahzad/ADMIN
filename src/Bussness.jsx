@@ -29,6 +29,7 @@ const BussnessUser = () => {
             categoryName: value.categoryId?.name,
             userid: value.userId._id
           }))
+          .sort((a, b) => a.userId.status - b.userId.status)
       );
     });
   }, []);
@@ -84,7 +85,7 @@ const BussnessUser = () => {
             color: 'green'
           }}
           columns={[
-            { field: 'name', width: 160 },
+            { field: 'name', width: 190 },
 
             { field: 'phoneno', width: 200 },
             { field: 'email', width: 300 },

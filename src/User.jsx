@@ -66,9 +66,7 @@ const User = () => {
                       Delete
                     </Button>
 
-                    <Button variant="contained" color="primary">
-                      View Bookings
-                    </Button>
+                  
                   </div>
                 );
               }

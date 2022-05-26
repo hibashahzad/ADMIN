@@ -67,7 +67,6 @@ const Booking = () => {
 
   return (
     <App>
-      <Button>Back</Button>
       <h3 style={{ textAlign: 'center' }}>Booking</h3>
 
       <div style={{ width: '100%' }}>
