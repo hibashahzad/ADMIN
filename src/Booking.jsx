@@ -7,9 +7,7 @@ import App from './App';
 
 import { Navigate, useParams, useNavigate } from 'react-router-dom';
 import bookings from './Services/services/Booking';
-import  Swal from 'sweetalert2';
-
-
+import Swal from 'sweetalert2';
 
 const Booking = () => {
   const [booking, setBooking] = React.useState([]);
@@ -48,22 +46,20 @@ const Booking = () => {
   };
   React.useEffect(() => {
     try {
-   
       bookings.getBooking().then((val) => {
-          setBooking(
-            val.Booking.map((value) => ({
-              ...value,
-              id: value._id,
-            Sname:value.ServiceId.name,
-            Sdetail:value.ServiceId.detail,
-            Sprice:value.ServiceId.Price,
-            Uname:value.UserId.name,
-            Uemail:value.UserId.email
-            
-            }))
-          );
-        });
-    
+        console.log(val);
+        setBooking(
+          val.Booking.map((value) => ({
+            ...value,
+            id: value._id,
+            Sname: value?.ServiceId?.name,
+            Sdetail: value?.ServiceId?.detail,
+            Sprice: value?.ServiceId?.Price,
+            Uname: value?.UserId?.name,
+            Uemail: value.UserId?.email
+          }))
+        );
+      });
     } catch (e) {
       console.log(e);
     }
@@ -73,7 +69,7 @@ const Booking = () => {
     <App>
       <Button>Back</Button>
       <h3 style={{ textAlign: 'center' }}>Booking</h3>
-     
+
       <div style={{ width: '100%' }}>
         <DataGrid
           autoHeight
@@ -82,7 +78,6 @@ const Booking = () => {
             color: 'green'
           }}
           columns={[
-            { field: 'NumberClients', width: 160 },
             {
               field: 'Price',
               width: 200
@@ -92,73 +87,79 @@ const Booking = () => {
               width: 300
             },
             {
-                field: 'Building',
-                width: 200
-              },
+              field: 'Building',
+              width: 200
+            },
 
-              {
-                field: 'City',
-                width: 200
-              },
-              {
-                field: 'State',
-                width: 100
-              },
-              {
-                field: 'Message',
-                width: 200
-              },
-              {
-                field: 'Date',
-                width: 200
-              },
-              {
-                field: 'Time',
-                width: 100
-              },
-              {
-                field: 'Status',
-                headerName: 'Status',
-                width: 100,
-                filterable: false,
-  
-                renderCell: (params) => {
-                  return (
-                    
-                    <div style={{ width: '100%' }}>
-                 {params.row.status==0?"Requested":params.row.status==1?"Payment Pending":params.row.status==2?"Rejected":"Canceled"}
-                    </div>
-                  );
-                }
+            {
+              field: 'City',
+              width: 200
+            },
+            {
+              field: 'State',
+              width: 100
+            },
+            {
+              field: 'Message',
+              width: 200
+            },
+            {
+              field: 'Date',
+              width: 200
+            },
+            {
+              field: 'Time',
+              width: 100
+            },
+            {
+              field: 'Status',
+              headerName: 'Status',
+              width: 100,
+              filterable: false,
+
+              renderCell: (params) => {
+                return (
+                  <div style={{ width: '100%' }}>
+                    {params.row.status == 0
+                      ? 'Requested'
+                      : params.row.status == 1
+                      ? 'Payment Pending'
+                      : params.row.status == 2
+                      ? 'Rejected'
+                      : 'Canceled'}
+                  </div>
+                );
               }
-         ,    {
-          field: 'Action',
-          headerName: 'Action',
-          width: 400,
-          filterable: false,
+            },
+            {
+              field: 'Action',
+              headerName: 'Action',
+              width: 400,
+              filterable: false,
 
-          renderCell: (params) => {
-            return <div style={{ width: '100%' }}>
-            <Button
-              style={{ marginRight: '4px' }}
-              variant="contained"
-              color="primary"
-              onClick={() => viewdetail(params.row)}
-            >
-              View Service Detail
-            </Button>
-            <Button
-              style={{ marginRight: '4px' }}
-              variant="contained"
-              color="primary"
-              onClick={() => viewUser(params.row)}
-            >
-              View User
-            </Button>
-          </div>
-          }
-        }
-         
+              renderCell: (params) => {
+                return (
+                  <div style={{ width: '100%' }}>
+                    <Button
+                      style={{ marginRight: '4px' }}
+                      variant="contained"
+                      color="primary"
+                      onClick={() => viewdetail(params.row)}
+                    >
+                      View Service Detail
+                    </Button>
+                    <Button
+                      style={{ marginRight: '4px' }}
+                      variant="contained"
+                      color="primary"
+                      onClick={() => viewUser(params.row)}
+                    >
+                      View User
+                    </Button>
+                  </div>
+                );
+              }
+            }
           ]}
           rows={booking}
           pageSize={8}
