@@ -95,7 +95,7 @@ const Quiz = () => {
                     <Button
                       style={{ marginRight: '4px' }}
                       variant="contained"
-                      color="primary"
+                      color="secondary"
                       onClick={() =>
                         viewdetail(
                           params.row.Question,
@@ -119,7 +119,7 @@ const Quiz = () => {
                     <Button
                       style={{ marginRight: '4px' }}
                       variant="contained"
-                      color="error"
+                      color="secondary"
                       onClick={() => del(params.row.id)}
                     >
                       Delete

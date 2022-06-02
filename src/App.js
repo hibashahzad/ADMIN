@@ -183,7 +183,7 @@ const App = ({ children }) => {
           ml: { sm: `${drawerWidth}px` }
         }}
       >
-        <Toolbar>
+        <Toolbar style={{ backgroundColor: '#A715C0' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -215,7 +215,8 @@ const App = ({ children }) => {
             display: { xs: 'block', sm: 'none' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
-              width: drawerWidth
+              width: drawerWidth,
+              backgroundColor: '#A715C0'
             }
           }}
         >
@@ -227,7 +228,8 @@ const App = ({ children }) => {
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
-              width: drawerWidth
+              width: drawerWidth,
+              backgroundColor: '#A715C0'
             }
           }}
           open
@@ -235,7 +237,10 @@ const App = ({ children }) => {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ flexGrow: 1, p: 1 }}>
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, p: 1, backgroundColor: '#D2E1E3' }}
+      >
         <Toolbar />
         <div>{children}</div>
       </Box>

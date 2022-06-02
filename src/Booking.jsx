@@ -69,7 +69,7 @@ const Booking = () => {
     <App>
       <h3 style={{ textAlign: 'center' }}>Booking</h3>
 
-      <div style={{ width: '100%' }}>
+      <div style={{ width: '100%', backgroundColor: '#D2E1E3' }}>
         <DataGrid
           autoHeight
           style={{
@@ -142,7 +142,7 @@ const Booking = () => {
                     <Button
                       style={{ marginRight: '4px' }}
                       variant="contained"
-                      color="primary"
+                      color="secondary"
                       onClick={() => viewdetail(params.row)}
                     >
                       View Service Detail
@@ -150,7 +150,7 @@ const Booking = () => {
                     <Button
                       style={{ marginRight: '4px' }}
                       variant="contained"
-                      color="primary"
+                      color="secondary"
                       onClick={() => viewUser(params.row)}
                     >
                       View User

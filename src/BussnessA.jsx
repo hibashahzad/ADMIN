@@ -92,7 +92,7 @@ const BussnessA = () => {
                     <Button
                       style={{ marginRight: '4px' }}
                       variant="contained"
-                      color="primary"
+                      color="secondary"
                       onClick={() =>
                         viewdetail(
                           params.row.address,
@@ -113,14 +113,14 @@ const BussnessA = () => {
                         <Button
                           style={{ marginRight: '4px' }}
                           variant="contained"
-                          color="primary"
+                          color="secondary"
                           onClick={() => changestatus(params.row._id, 1)}
                         >
                           Approve
                         </Button>
                         <Button
                           variant="contained"
-                          color="primary"
+                          color="secondary"
                           onClick={() => changestatus(params.row._id, 2)}
                         >
                           Disaaprove
@@ -131,14 +131,14 @@ const BussnessA = () => {
                         <Button
                           style={{ marginRight: '4px' }}
                           variant="contained"
-                          color="primary"
+                          color="secondary"
                           disabled
                         >
                           {params.row.status == 1 ? 'Approved' : 'Disapproved'}
                         </Button>
                         <Button
                           variant="contained"
-                          color="primary"
+                          color="secondary"
                           onClick={() =>
                             navigate('/Services/' + params.row.userid)
                           }

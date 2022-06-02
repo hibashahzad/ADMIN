@@ -13,10 +13,10 @@
 button {
   height: 40px;
 }
-.MuiDataGrid-row.Mui-odd {
+/* .MuiDataGrid-row.Mui-odd {
   background-color: green !important;
 }
 .MuiDataGrid-row:nth-child(even){
   background-color: rgba(144, 238, 180,0.6) !important ;
 
-}
+} */

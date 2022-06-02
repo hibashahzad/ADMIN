@@ -26,7 +26,7 @@ import styled from 'styled-components';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Category from './Services/services/CategoryServices';
 import ImageUploading from 'react-images-uploading';
 import SubCategory from './Services/services/subCategorybyCategory';
@@ -51,6 +51,7 @@ const validationSchema = yup.object({
 export default function AddEditSub() {
   const { id, Sub } = useParams();
   const [imageS, setImage] = React.useState('');
+  const navigate = useNavigate();
   React.useEffect(() => {
     if (Sub) {
       SubCategory.getSingleCategory(Sub).then((val) => {
@@ -89,6 +90,7 @@ export default function AddEditSub() {
           };
           axios.post('http://localhost:3000/api/subcategory', formData, config);
           notify('SubCategory Uploaded');
+          navigate(-1);
           // 625e92f6c79665679583d09b
           // try {
           //   Category.updateCategory(id, { name: values.name }).then((val) => {
@@ -113,16 +115,26 @@ export default function AddEditSub() {
           }
         };
         if (images.length < 1) {
-          axios.put('http://localhost:3000/api/subcategory/' + Sub, {
-            detail: values.detail,
-            name: values.name
-          });
+          axios
+            .put('http://localhost:3000/api/subcategory/' + Sub, {
+              detail: values.detail,
+              name: values.name
+            })
+            .then((e) => {
+              notify('Successfully Updated');
+              navigate(-1);
+            });
         } else {
-          axios.put(
-            'http://localhost:3000/api/subcategory/image/' + Sub,
-            formData,
-            config
-          );
+          axios
+            .put(
+              'http://localhost:3000/api/subcategory/image/' + Sub,
+              formData,
+              config
+            )
+            .then((e) => {
+              notify('Successfully Updated');
+              navigate(-1);
+            });
         }
         notify('SubCategory Uploaded');
       }
@@ -276,6 +288,7 @@ export default function AddEditSub() {
                   <Button
                     type="submit"
                     fullWidth
+                    color="secondary"
                     variant="contained"
                     sx={{
                       margin: '14px 0',

@@ -24,7 +24,7 @@ import styled from 'styled-components';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Category from './Services/services/CategoryServices';
 import QuizP from './Services/services/quiz';
 
@@ -59,6 +59,7 @@ const validationSchema = yup.object({
 export default function PalmistQuiz() {
   const { id, sub } = useParams();
   const [loading, setloading] = React.useState(false);
+  const navigate = useNavigate();
   const [initialValue, setInitialValue] = React.useState({
     Question: '',
     Answer1: '',
@@ -91,6 +92,8 @@ export default function PalmistQuiz() {
           }).then((val) => {
             resetForm();
             notify('Quiz Added');
+
+            navigate(-1);
           });
         } else {
           QuizP.updateQuiz(sub, {
@@ -100,6 +103,7 @@ export default function PalmistQuiz() {
             Answer3: values.Answer3
           }).then((val) => {
             notify('Quiz updated');
+            navigate(-1);
           });
         }
       } catch (e) {

@@ -123,7 +123,7 @@ const AllServices = () => {
                     <Button
                       style={{ marginRight: '4px' }}
                       variant="contained"
-                      color="primary"
+                      color="secondary"
                       onClick={() => viewdetail(params.row)}
                     >
                       View Detail

@@ -24,7 +24,7 @@ import styled from 'styled-components';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Category from './Services/services/CategoryServices';
 
 const Wrapper = styled.div`
@@ -47,6 +47,8 @@ export default function AddEditCategory() {
   const { id } = useParams();
   const [loading, setloading] = React.useState(false);
   const [initialValue, setInitialValue] = React.useState({ name: '' });
+  const navigate = useNavigate();
+
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: initialValue,
@@ -56,14 +58,16 @@ export default function AddEditCategory() {
 
       try {
         Category.updateCategory(id, { name: values.name }).then((val) => {
-          alert('updated');
+          notify('Successfully Updated');
+          navigate(-1);
         });
       } catch (e) {
         alert(e.error);
       }
     }
   });
-
+  const notify = (error) =>
+    toast(error, { position: 'top-left', type: 'error' });
   React.useEffect(() => {
     try {
       Category.getCategoryByid(id).then((val) => {
@@ -73,9 +77,6 @@ export default function AddEditCategory() {
       notify(e.error);
     }
   }, []);
-
-  const notify = (error) =>
-    toast(error, { position: 'top-left', type: 'error' });
 
   return (
     <App>

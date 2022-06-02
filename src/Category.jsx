@@ -52,9 +52,8 @@ const CategoryPage = () => {
                 return (
                   <div style={{ width: '100%' }}>
                     <Button
-                      style={{ marginRight: '4px' }}
+                      style={{ marginRight: '4px', backgroundColor: '#A715C0' }}
                       variant="contained"
-                      color="error"
                       onClick={() => {
                         view(params.row.id);
                       }}
@@ -62,9 +61,8 @@ const CategoryPage = () => {
                       View SubCategories
                     </Button>
                     <Button
-                      style={{ marginRight: '4px' }}
+                      style={{ marginRight: '4px', backgroundColor: '#A715C0' }}
                       variant="contained"
-                      color="primary"
                       onClick={() => {
                         Add(params.row.id);
                       }}
@@ -73,9 +71,8 @@ const CategoryPage = () => {
                     </Button>
 
                     <Button
-                      style={{ marginRight: '4px' }}
+                      style={{ marginRight: '4px', backgroundColor: '#A715C0' }}
                       variant="contained"
-                      color="primary"
                       onClick={() => {
                         Edit(params.row.id);
                       }}

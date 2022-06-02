@@ -9,6 +9,8 @@ import SubCategory from './Services/services/subCategorybyCategory';
 import { Navigate, useParams, useNavigate } from 'react-router-dom';
 import { url } from './Services/services/url';
 import Swal from 'sweetalert2';
+import CreateIcon from '@mui/icons-material/Create';
+import QuizIcon from '@mui/icons-material/Quiz';
 
 const SubCateg = () => {
   const [category, setcategory] = React.useState([]);
@@ -76,10 +78,7 @@ const SubCateg = () => {
           }}
           columns={[
             { field: 'name', width: 160 },
-            {
-              field: 'detail',
-              width: 200
-            },
+
             {
               field: 'Category',
               width: 200
@@ -98,24 +97,25 @@ const SubCateg = () => {
             {
               field: 'Palmist Quiz',
               headerName: 'Palmist',
-              width: 300,
+              width: 100,
               filterable: false,
 
               renderCell: (params) => {
                 return (
                   <div style={{ width: '100%' }}>
-                    <Button
-                      style={{ marginRight: '4px' }}
+                    <QuizIcon
+                      style={{ marginRight: '4px', cursor: 'pointer' }}
                       variant="contained"
-                      color="primary"
+                      color="secondary"
                       onClick={() => {
                         quiz(params.row.id);
                       }}
                     >
                       View Quiz
-                    </Button>
-                    <Button
-                      style={{ marginRight: '4px' }}
+                    </QuizIcon>
+
+                    <CreateIcon
+                      style={{ marginRight: '4px', cursor: 'pointer' }}
                       variant="contained"
                       color="secondary"
                       onClick={() => {
@@ -123,7 +123,7 @@ const SubCateg = () => {
                       }}
                     >
                       Add PalmistQuiz
-                    </Button>
+                    </CreateIcon>
                   </div>
                 );
               }
@@ -136,9 +136,8 @@ const SubCateg = () => {
                 return (
                   <div style={{ width: '100%' }}>
                     <Button
-                      style={{ marginRight: '4px' }}
+                      style={{ marginRight: '4px', backgroundColor: '#A715C0' }}
                       variant="contained"
-                      color="info"
                       onClick={() => {
                         Swal.fire({
                           title: 'Detail',
@@ -151,9 +150,8 @@ const SubCateg = () => {
                       View Detail
                     </Button>
                     <Button
-                      style={{ marginRight: '4px' }}
+                      style={{ marginRight: '4px', backgroundColor: '#A715C0' }}
                       variant="contained"
-                      color="error"
                       onClick={() => {
                         deleteS(params.row.id);
                       }}
@@ -162,9 +160,8 @@ const SubCateg = () => {
                     </Button>
 
                     <Button
-                      style={{ marginRight: '4px' }}
+                      style={{ marginRight: '4px', backgroundColor: '#A715C0' }}
                       variant="contained"
-                      color="secondary"
                       onClick={() => {
                         editS(params.row.id, params.row.Categoryid);
                       }}

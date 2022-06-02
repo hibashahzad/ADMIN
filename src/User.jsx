@@ -58,15 +58,12 @@ const User = () => {
                 return (
                   <div style={{ width: '100%' }}>
                     <Button
-                      style={{ marginRight: '4px' }}
+                      style={{ marginRight: '4px', backgroundColor: '#A715C0' }}
                       variant="contained"
-                      color="error"
                       onClick={() => deleteS(params.row.id)}
                     >
                       Delete
                     </Button>
-
-                  
                   </div>
                 );
               }
