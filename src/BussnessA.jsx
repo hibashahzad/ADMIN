@@ -64,7 +64,7 @@ const BussnessA = () => {
   };
   return (
     <App>
-      <h4 style={{ textAlign: 'center' }}>Bussness User</h4>
+      <h4 style={{ textAlign: 'center' }}>Business User</h4>
 
       <div style={{ width: '100%' }}>
         <DataGrid
