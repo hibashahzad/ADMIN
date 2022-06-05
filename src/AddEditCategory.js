@@ -10,10 +10,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import axios from 'axios';
 
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
+
 import App from './App';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -262,7 +259,11 @@ export default function AddEditSub() {
                           Click or Drop here
                         </button>
                         &nbsp;
-                        <button type='button' onClick={onImageRemoveAll} type="button">
+                        <button
+                          type="button"
+                          onClick={onImageRemoveAll}
+                          type="button"
+                        >
                           Remove all images
                         </button>
                         {imageList.length > 0 ? (
@@ -270,10 +271,16 @@ export default function AddEditSub() {
                             <div key={index} className="image-item">
                               <img src={image['data_url']} alt="" width="100" />
                               <div className="image-item__btn-wrapper">
-                                <button type='button' onClick={() => onImageUpdate(index)}>
+                                <button
+                                  type="button"
+                                  onClick={() => onImageUpdate(index)}
+                                >
                                   Update
                                 </button>
-                                <button type='button' onClick={() => onImageRemove(index)}>
+                                <button
+                                  type="button"
+                                  onClick={() => onImageRemove(index)}
+                                >
                                   Remove
                                 </button>
                               </div>

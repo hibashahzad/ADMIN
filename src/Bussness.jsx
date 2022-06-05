@@ -22,6 +22,7 @@ const BussnessUser = () => {
             ...value,
             id: value._id,
             _id: value.userId._id,
+            active: value.userId.active,
             name: value.userId.name,
             status: value.userId.status,
             email: value.userId.email,
@@ -119,44 +120,52 @@ const BussnessUser = () => {
                       View Detail
                     </Button>
 
-                    {params.row.status == 0 ? (
-                      <>
-                        <Button
-                          style={{ marginRight: '4px' }}
-                          variant="contained"
-                          color="secondary"
-                          onClick={() => changestatus(params.row._id, 1)}
-                        >
-                          Approve
-                        </Button>
-                        <Button
-                          variant="contained"
-                          color="secondary"
-                          onClick={() => changestatus(params.row._id, 2)}
-                        >
-                          Disaaprove
-                        </Button>
-                      </>
+                    {params.row.active ? (
+                      params.row.status == 0 ? (
+                        <>
+                          <Button
+                            style={{ marginRight: '4px' }}
+                            variant="contained"
+                            color="secondary"
+                            onClick={() => changestatus(params.row._id, 1)}
+                          >
+                            Approve
+                          </Button>
+                          <Button
+                            variant="contained"
+                            color="secondary"
+                            onClick={() => changestatus(params.row._id, 2)}
+                          >
+                            Disaaprove
+                          </Button>
+                        </>
+                      ) : (
+                        <>
+                          <Button
+                            style={{ marginRight: '4px' }}
+                            variant="contained"
+                            color="secondary"
+                            disabled
+                          >
+                            {params.row.status == 1
+                              ? 'Approved'
+                              : 'Disapproved'}
+                          </Button>
+                          <Button
+                            variant="contained"
+                            color="secondary"
+                            onClick={() =>
+                              navigate('/Services/' + params.row.userid)
+                            }
+                          >
+                            View Services
+                          </Button>
+                        </>
+                      )
                     ) : (
-                      <>
-                        <Button
-                          style={{ marginRight: '4px' }}
-                          variant="contained"
-                          color="secondary"
-                          disabled
-                        >
-                          {params.row.status == 1 ? 'Approved' : 'Disapproved'}
-                        </Button>
-                        <Button
-                          variant="contained"
-                          color="secondary"
-                          onClick={() =>
-                            navigate('/Services/' + params.row.userid)
-                          }
-                        >
-                          View Services
-                        </Button>
-                      </>
+                      <Button disabled variant="contained" color="secondary">
+                        Email Not Verified
+                      </Button>
                     )}
                   </div>
                 );
