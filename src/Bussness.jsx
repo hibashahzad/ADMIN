@@ -66,18 +66,8 @@ const BussnessUser = () => {
   };
   return (
     <App>
-      <h4 style={{ textAlign: 'center' }}>Bussness User</h4>
-      <Fab
-        color="primary"
-        aria-label="add"
-        sx={{
-          position: 'fixed',
-          top: 70,
-          right: 16
-        }}
-      >
-        <AddIcon />
-      </Fab>
+      <h4 style={{ textAlign: 'center' }}>Business User</h4>
+   
       <div style={{ width: '100%' }}>
         <DataGrid
           autoHeight
