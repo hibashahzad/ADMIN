@@ -6,7 +6,9 @@ import AddIcon from '@mui/icons-material/Add';
 import App from './App';
 import Category from './Services/services/CategoryServices';
 import { useNavigate } from 'react-router-dom';
+import DetailsIcon from '@mui/icons-material/Details';
 
+import EditIcon from '@mui/icons-material/Edit';
 const CategoryPage = () => {
   const [category, setcategory] = React.useState([]);
   const navigate = useNavigate();
@@ -51,34 +53,37 @@ const CategoryPage = () => {
               renderCell: (params) => {
                 return (
                   <div style={{ width: '100%' }}>
-                    <Button
-                      style={{ marginRight: '4px', backgroundColor: '#A715C0' }}
+                    <DetailsIcon
+                      style={{ marginRight: '4px',fontSize:"30px" ,cursor:"pointer"}}
                       variant="contained"
+                      color="secondary"
                       onClick={() => {
                         view(params.row.id);
                       }}
                     >
                       View SubCategories
-                    </Button>
-                    <Button
-                      style={{ marginRight: '4px', backgroundColor: '#A715C0' }}
+                    </DetailsIcon>
+                    <AddIcon
+                      style={{ marginRight: '4px' ,fontSize:"30px",cursor:"pointer" }}
                       variant="contained"
+                      color="secondary"
                       onClick={() => {
                         Add(params.row.id);
                       }}
                     >
                       Add SubCategory
-                    </Button>
+                    </AddIcon>
 
-                    <Button
-                      style={{ marginRight: '4px', backgroundColor: '#A715C0' }}
+                    <EditIcon
+                      style={{ marginRight: '4px',fontSize:"30px",cursor:"pointer" }}
                       variant="contained"
+                      color="secondary"
                       onClick={() => {
                         Edit(params.row.id);
                       }}
                     >
                       Edit
-                    </Button>
+                    </EditIcon>
                   </div>
                 );
               }

@@ -8,6 +8,7 @@ import UerServices from './Services/services/UserServices';
 import Swal from 'sweetalert2';
 import { url } from './Services/services/url';
 import { useNavigate } from 'react-router-dom';
+import DetailsIcon from '@mui/icons-material/Details';
 
 const BussnessUser = () => {
   const [user, setuser] = React.useState([]);
@@ -91,10 +92,10 @@ const BussnessUser = () => {
               renderCell: (params) => {
                 return (
                   <div style={{ width: '100%' }}>
-                    <Button
-                      style={{ marginRight: '4px' }}
+                    <DetailsIcon
+                      style={{ marginRight: '4px' ,fontSize:"40px",cursor:"pointer" }}
                       variant="contained"
-                      color="primary"
+                      color="secondary"
                       onClick={() =>
                         viewdetail(
                           params.row.address,
@@ -108,7 +109,7 @@ const BussnessUser = () => {
                       }
                     >
                       View Detail
-                    </Button>
+                    </DetailsIcon>
 
                     {params.row.active ? (
                       params.row.status == 0 ? (

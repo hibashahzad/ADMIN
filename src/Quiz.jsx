@@ -8,7 +8,9 @@ import Category from './Services/services/CategoryServices';
 import { useNavigate, useParams } from 'react-router-dom';
 import QuizP from './Services/services/quiz';
 import Swal from 'sweetalert2';
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import DetailsIcon from '@mui/icons-material/Details';
 const Quiz = () => {
   const [quiz, setQuiz] = React.useState([]);
   const { id } = useParams();
@@ -92,8 +94,8 @@ const Quiz = () => {
               renderCell: (params) => {
                 return (
                   <div style={{ width: '100%' }}>
-                    <Button
-                      style={{ marginRight: '4px' }}
+                    <DetailsIcon
+                      style={{ marginRight: '4px' ,fontSize:"30px",cursor:"pointer"}}
                       variant="contained"
                       color="secondary"
                       onClick={() =>
@@ -107,23 +109,23 @@ const Quiz = () => {
                       }
                     >
                       View Detail
-                    </Button>
-                    <Button
-                      style={{ marginRight: '4px' }}
+                    </DetailsIcon>
+                    <EditIcon
+                      style={{ marginRight: '4px' ,fontSize:"30px",cursor:"pointer"}}
                       variant="contained"
                       color="secondary"
                       onClick={() => edit(params.row.id)}
                     >
                       Edit
-                    </Button>
-                    <Button
-                      style={{ marginRight: '4px' }}
+                    </EditIcon>
+                    <DeleteIcon
+                      style={{ marginRight: '4px' ,cursor:"pointer",fontSize:"30px"}}
                       variant="contained"
                       color="secondary"
                       onClick={() => del(params.row.id)}
                     >
                       Delete
-                    </Button>
+                    </DeleteIcon>
                   </div>
                 );
               }

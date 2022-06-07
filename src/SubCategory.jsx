@@ -11,6 +11,9 @@ import { url } from './Services/services/url';
 import Swal from 'sweetalert2';
 import CreateIcon from '@mui/icons-material/Create';
 import QuizIcon from '@mui/icons-material/Quiz';
+import EditIcon from '@mui/icons-material/Edit';
+import DetailsIcon from '@mui/icons-material/Details';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const SubCateg = () => {
   const [category, setcategory] = React.useState([]);
@@ -104,7 +107,7 @@ const SubCateg = () => {
                 return (
                   <div style={{ width: '100%' }}>
                     <QuizIcon
-                      style={{ marginRight: '4px', cursor: 'pointer' }}
+                      style={{ marginRight: '4px', cursor: 'pointer',fontSize:"30px" ,cursor:"pointer"}}
                       variant="contained"
                       color="secondary"
                       onClick={() => {
@@ -115,7 +118,7 @@ const SubCateg = () => {
                     </QuizIcon>
 
                     <CreateIcon
-                      style={{ marginRight: '4px', cursor: 'pointer' }}
+                      style={{ marginRight: '4px', cursor: 'pointer',fontSize:"30px" }}
                       variant="contained"
                       color="secondary"
                       onClick={() => {
@@ -135,9 +138,10 @@ const SubCateg = () => {
               renderCell: (params) => {
                 return (
                   <div style={{ width: '100%' }}>
-                    <Button
-                      style={{ marginRight: '4px', backgroundColor: '#A715C0' }}
+                    <DetailsIcon
+                      style={{ marginRight: '4px',fontSize:"30px" ,cursor:"pointer"}}
                       variant="contained"
+                      color="secondary"
                       onClick={() => {
                         Swal.fire({
                           title: 'Detail',
@@ -148,26 +152,28 @@ const SubCateg = () => {
                       }}
                     >
                       View Detail
-                    </Button>
-                    <Button
-                      style={{ marginRight: '4px', backgroundColor: '#A715C0' }}
+                    </DetailsIcon>
+                    <DeleteIcon
+                      style={{ marginRight: '4px', fontSize:"30px" ,cursor:"pointer"}}
                       variant="contained"
+                      color="secondary"
                       onClick={() => {
                         deleteS(params.row.id);
                       }}
                     >
                       Delete
-                    </Button>
+                    </DeleteIcon>
 
-                    <Button
-                      style={{ marginRight: '4px', backgroundColor: '#A715C0' }}
+                    <EditIcon
+                      style={{ marginRight: '4px',fontSize:"30px" ,cursor:"pointer"}}
                       variant="contained"
+                      color="secondary"
                       onClick={() => {
                         editS(params.row.id, params.row.Categoryid);
                       }}
                     >
                       Edit
-                    </Button>
+                    </EditIcon>
                   </div>
                 );
               }

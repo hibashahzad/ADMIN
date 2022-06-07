@@ -4,8 +4,10 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { Button, Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import App from './App';
+import DeleteIcon from '@mui/icons-material/Delete';
 import UerServices from './Services/services/UserServices';
 import Swal from 'sweetalert2';
+
 
 const User = () => {
   const [user, setuser] = React.useState([]);
@@ -57,13 +59,14 @@ const User = () => {
               renderCell: (params) => {
                 return (
                   <div style={{ width: '100%' }}>
-                    <Button
-                      style={{ marginRight: '4px', backgroundColor: '#A715C0' }}
+                    <DeleteIcon
+                      style={{ marginRight: '4px', Color: '#A715C0',cursor:"pointer" ,fontSize:"30px"}}
                       variant="contained"
+                      color="secondary"
                       onClick={() => deleteS(params.row.id)}
                     >
                       Delete
-                    </Button>
+                    </DeleteIcon>
                   </div>
                 );
               }

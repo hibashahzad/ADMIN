@@ -8,6 +8,8 @@ import UerServices from './Services/services/UserServices';
 import Swal from 'sweetalert2';
 import { url } from './Services/services/url';
 import { useNavigate } from 'react-router-dom';
+import DetailsIcon from '@mui/icons-material/Details';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
 const BussnessA = () => {
   const [user, setuser] = React.useState([]);
@@ -89,8 +91,8 @@ const BussnessA = () => {
               renderCell: (params) => {
                 return (
                   <div style={{ width: '100%' }}>
-                    <Button
-                      style={{ marginRight: '4px' }}
+                    <DetailsIcon
+                      style={{ marginRight: '4px',fontSize:"30px" ,cursor:"pointer" }}
                       variant="contained"
                       color="secondary"
                       onClick={() =>
@@ -106,7 +108,7 @@ const BussnessA = () => {
                       }
                     >
                       View Detail
-                    </Button>
+                    </DetailsIcon>
 
                     {params.row.status == 0 ? (
                       <>
@@ -136,7 +138,8 @@ const BussnessA = () => {
                         >
                           {params.row.status == 1 ? 'Approved' : 'Disapproved'}
                         </Button>
-                        <Button
+                        <RemoveRedEyeIcon
+                        style={{fontSize:"30px",cursor:"pointer"}}
                           variant="contained"
                           color="secondary"
                           onClick={() =>
@@ -144,7 +147,7 @@ const BussnessA = () => {
                           }
                         >
                           View Services
-                        </Button>
+                        </RemoveRedEyeIcon>
                       </>
                     )}
                   </div>

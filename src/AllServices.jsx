@@ -4,11 +4,13 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { Button, Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import App from './App';
+import DetailsIcon from '@mui/icons-material/Details';
 import Category from './Services/services/CategoryServices';
 import SubCategory from './Services/services/subCategorybyCategory';
 import { Navigate, useParams, useNavigate } from 'react-router-dom';
 import { url } from './Services/services/url';
 import Swal from 'sweetalert2';
+import DeleteIcon from '@mui/icons-material/Delete';
 import Services from './Services/services/Service';
 
 const AllServices = () => {
@@ -120,22 +122,22 @@ const AllServices = () => {
               renderCell: (params) => {
                 return (
                   <div style={{ width: '100%' }}>
-                    <Button
-                      style={{ marginRight: '4px' }}
+                    <DetailsIcon
+                      style={{ marginRight: '4px',cursor:'pointer' ,fontSize:"30px" }}
                       variant="contained"
                       color="secondary"
                       onClick={() => viewdetail(params.row)}
                     >
                       View Detail
-                    </Button>
-                    <Button
-                      style={{ marginRight: '4px' }}
+                    </DetailsIcon>
+                    <DeleteIcon
+                      style={{ marginRight: '4px',cursor:'pointer',fontSize:"30px" }}
                       variant="contained"
                       color="secondary"
                       onClick={() => deleteDervice(params.row.id)}
                     >
                       Delete Service
-                    </Button>
+                    </DeleteIcon>
                   </div>
                 );
               }

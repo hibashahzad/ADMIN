@@ -8,7 +8,8 @@ import App from './App';
 import { Navigate, useParams, useNavigate } from 'react-router-dom';
 import bookings from './Services/services/Booking';
 import Swal from 'sweetalert2';
-
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 const Booking = () => {
   const [booking, setBooking] = React.useState([]);
   const { id } = useParams();
@@ -139,22 +140,22 @@ const Booking = () => {
               renderCell: (params) => {
                 return (
                   <div style={{ width: '100%' }}>
-                    <Button
-                      style={{ marginRight: '4px' }}
+                    <BusinessCenterIcon
+                      style={{ marginRight: '4px' ,fontSize:"30px" ,cursor:"pointer"}}
                       variant="contained"
                       color="secondary"
                       onClick={() => viewdetail(params.row)}
                     >
                       View Service Detail
-                    </Button>
-                    <Button
-                      style={{ marginRight: '4px' }}
+                    </BusinessCenterIcon>
+                    <AccessibilityNewIcon
+                      style={{ marginRight: '4px',fontSize:"30px",cursor:"pointer" }}
                       variant="contained"
                       color="secondary"
                       onClick={() => viewUser(params.row)}
                     >
                       View User
-                    </Button>
+                    </AccessibilityNewIcon>
                   </div>
                 );
               }
