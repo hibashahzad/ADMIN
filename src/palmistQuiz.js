@@ -3,30 +3,30 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-props-no-spreading */
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import App from './App';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import App from "./App";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
 
-import Container from '@mui/material/Container';
-import { CircularProgress, Paper } from '@mui/material';
-import { toast, ToastContainer } from 'react-toastify';
-import styled from 'styled-components';
-import { useFormik } from 'formik';
-import * as yup from 'yup';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import { useParams, useNavigate } from 'react-router-dom';
-import Category from './Services/services/CategoryServices';
-import QuizP from './Services/services/quiz';
+import Container from "@mui/material/Container";
+import { CircularProgress, Paper } from "@mui/material";
+import { toast, ToastContainer } from "react-toastify";
+import styled from "styled-components";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import { useParams, useNavigate } from "react-router-dom";
+import Category from "./Services/services/CategoryServices";
+import QuizP from "./Services/services/quiz";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -40,31 +40,31 @@ const Wrapper = styled.div`
 
 const validationSchema = yup.object({
   Question: yup
-    .string('Enter Question')
+    .string("Enter Question")
 
-    .required('Question is required'),
+    .required("Question is required"),
   Answer1: yup
-    .string('Enter Category')
+    .string("Enter Category")
 
-    .required('Answer is required'),
+    .required("Answer is required"),
   Answer2: yup
-    .string('Enter Category')
+    .string("Enter Category")
 
-    .required('Answer is required'),
+    .required("Answer is required"),
   Answer3: yup
-    .string('Enter Category')
+    .string("Enter Category")
 
-    .required('Answer is required')
+    .required("Answer is required"),
 });
 export default function PalmistQuiz() {
   const { id, sub } = useParams();
   const [loading, setloading] = React.useState(false);
   const navigate = useNavigate();
   const [initialValue, setInitialValue] = React.useState({
-    Question: '',
-    Answer1: '',
-    Answer2: '',
-    Answer3: ''
+    Question: "",
+    Answer1: "",
+    Answer2: "",
+    Answer3: "",
   });
   React.useEffect(() => {
     if (sub) {
@@ -88,10 +88,10 @@ export default function PalmistQuiz() {
             Answer1: values.Answer1,
             Answer2: values.Answer2,
             Answer3: values.Answer3,
-            SubCategoryId: id
+            SubCategoryId: id,
           }).then((val) => {
             resetForm();
-            notify('Quiz Added');
+            notify("Quiz Added");
 
             navigate(-1);
           });
@@ -100,52 +100,52 @@ export default function PalmistQuiz() {
             Question: values.Question,
             Answer1: values.Answer1,
             Answer2: values.Answer2,
-            Answer3: values.Answer3
+            Answer3: values.Answer3,
           }).then((val) => {
-            notify('Quiz updated');
+            notify("Quiz updated");
             navigate(-1);
           });
         }
       } catch (e) {
         alert(e.error);
       }
-    }
+    },
   });
 
   const notify = (error) =>
-    toast(error, { position: 'top-left', type: 'error' });
+    toast(error, { position: "top-left", type: "error" });
 
   return (
     <App>
       <Wrapper>
         <div
           style={{
-            margin: '7px 0',
-            display: 'flex',
-            height: '100vh',
-            alignItems: 'center'
+            margin: "7px 0",
+            display: "flex",
+            height: "100vh",
+            alignItems: "center",
           }}
         >
-          <Paper elevation={10} sx={{ backgroundColor: 'transparent' }}>
+          <Paper elevation={10} sx={{ backgroundColor: "transparent" }}>
             <Container component="main" maxWidth="md">
               <CssBaseline />
               <Box
                 sx={{
                   marginTop: 2,
-                  backgroundColor: 'transparent',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center'
+                  backgroundColor: "transparent",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
                 }}
               >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
                   <ShoppingBasketIcon />
                 </Avatar>
                 <Typography
                   component="h1"
                   variant="h5"
                   sx={{
-                    margin: '14px 0'
+                    margin: "14px 0",
                   }}
                 >
                   Palmist Quiz
@@ -153,7 +153,7 @@ export default function PalmistQuiz() {
 
                 <form onSubmit={formik.handleSubmit}>
                   <TextField
-                    style={{ marginTop: '10px' }}
+                    style={{ marginTop: "10px" }}
                     fullWidth
                     id="Question"
                     name="Question"
@@ -168,7 +168,7 @@ export default function PalmistQuiz() {
                     }
                   />
                   <TextField
-                    style={{ marginTop: '10px' }}
+                    style={{ marginTop: "10px" }}
                     fullWidth
                     id="name"
                     name="Answer1"
@@ -181,7 +181,7 @@ export default function PalmistQuiz() {
                     helperText={formik.touched.Answer1 && formik.errors.Answer1}
                   />
                   <TextField
-                    style={{ marginTop: '10px' }}
+                    style={{ marginTop: "10px" }}
                     fullWidth
                     id="Answer2"
                     name="Answer2"
@@ -194,7 +194,7 @@ export default function PalmistQuiz() {
                     helperText={formik.touched.Answer2 && formik.errors.Answer2}
                   />
                   <TextField
-                    style={{ marginTop: '10px' }}
+                    style={{ marginTop: "10px" }}
                     fullWidth
                     id="Answer3"
                     name="Answer3"
@@ -209,18 +209,18 @@ export default function PalmistQuiz() {
 
                   {/* <CircularProgress size={10} /> */}
                   <Button
-                    style={{ marginTop: '10px' }}
+                    style={{ marginTop: "10px" }}
                     type="submit"
                     fullWidth
                     variant="contained"
                     sx={{
-                      margin: '14px 0',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center'
+                      margin: "14px 0",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
                     }}
                   >
-                    Save
+                    Create
                   </Button>
                 </form>
               </Box>
